@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Microsoft.WindowsAzure.ActiveDirectory.User>
+
+@{
+    ViewBag.Title = "Employee Listing";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <th>
+            Employee Name
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th>
+            Office Phone
+        </th>
+        <th>
+            Department
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userPrincipalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telephoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.objectId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.objectId })
+        </td>
+    </tr>
+}
+
+</table>
+@if (ViewBag.ContinuationToken != null)
+{
+    @Html.ActionLink("Next >", "Index", new { nextLinkUri = ViewBag.ContinuationToken });
+}

@@ -1,0 +1,59 @@
+﻿@model Microsoft.WindowsAzure.ActiveDirectory.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Employee Details</h2>
+
+ <b>Thumbnail Photo: </b>  <img src='@Url.Action( "ShowThumbnail", "user", new { id = Model.objectId } )' alt="No Image Exists"/>
+            
+
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.displayName)</legend>
+    
+    <div>
+         Email Address : @Html.DisplayFor(model => model.userPrincipalName)
+    </div>
+    
+    <div>
+         Office Phone : @Html.DisplayFor(model => model.telephoneNumber)
+    </div>
+
+    <div>
+         Mobile Number : @Html.DisplayFor(model => model.mobile)
+    </div> 
+
+    <div>
+         City : @Html.DisplayFor(model => model.city)
+    </div>
+
+    <div>
+         State : @Html.DisplayFor(model => model.state)
+    </div>
+
+     <div>
+         Job Title : @Html.DisplayFor(model => model.jobTitle)
+    </div> 
+
+    <div>
+         Department : @Html.DisplayFor(model => model.department)
+    </div>
+
+    <div>
+         Full Name : @Html.DisplayFor(model => model.displayName)
+    </div>
+
+    <div>
+         First Name : @Html.DisplayFor(model => model.givenName)
+    </div>   
+
+    <div>
+         Last Name : @Html.DisplayFor(model => model.surname)
+    </div>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.objectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,118 @@
+﻿@model Microsoft.WindowsAzure.ActiveDirectory.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Employee</h2>
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    <label style="color: #FF0000" >*</label><label>indicates a mandetory field</label><br />
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.objectId)
+        @Html.HiddenFor(model => model.objectType)
+        @Html.HiddenFor(model => model.mailNickname)
+        @Html.HiddenFor(model => model.userPrincipalName)
+        @Html.HiddenFor(model => model.accountEnabled)
+
+        <div class="editor-label">
+            Display Name <label style="color: #FF0000" >*</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.displayName)
+            @Html.ValidationMessageFor(model => model.displayName)
+        </div>
+
+        <div class="editor-label">
+            User Principal Name <label style="color: #FF0000" >*</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("emailAlias", Model.mailNickname)
+            <label>@@</label>  @Html.DropDownList("selectedDomain")
+            @Html.ValidationMessageFor(model => model.userPrincipalName)
+        </div>
+
+        <div class="editor-field">
+            @Html.Label("Upload User Photo")
+            <br />
+            <input type=file name="photofile" />
+        </div>
+
+         <div class="editor-label">
+            Office Phone
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.telephoneNumber)
+            @Html.ValidationMessageFor(model => model.telephoneNumber)
+        </div>
+
+         <div class="editor-label">
+            Mobile Phone
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mobile)
+            @Html.ValidationMessageFor(model => model.mobile)
+        </div>
+
+         <div class="editor-label">
+            Department
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.department)
+            @Html.ValidationMessageFor(model => model.department)
+        </div>
+
+        <div class="editor-label">
+            Job Title
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jobTitle)
+            @Html.ValidationMessageFor(model => model.jobTitle)
+        </div>
+
+        <div class="editor-label">
+            City
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            State
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.state)
+            @Html.ValidationMessageFor(model => model.state)
+        </div>
+
+        <div class="editor-label">
+            First Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.givenName)
+            @Html.ValidationMessageFor(model => model.givenName)
+        </div>       
+
+        <div class="editor-label">
+            Last Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.surname)
+            @Html.ValidationMessageFor(model => model.surname)
+        </div>       
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
